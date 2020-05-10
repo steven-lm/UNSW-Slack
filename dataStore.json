@@ -1,0 +1,70 @@
+{
+    "n_users": 1,
+    "users": [
+        {
+            "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1X2lkIjowLCJwYXNzd29yZCI6IjEyMzQ1NiJ9.91e8Yiop5IfH_WH5z4kUJMCu57zj9cevCMBYZVZkNfk",
+            "email": "bob@gmail.com",
+            "password": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
+            "name_first": "asd",
+            "name_last": "asd",
+            "handle_str": "asdasd",
+            "u_id": 0,
+            "channels": [
+                0
+            ],
+            "permission": 1,
+            "reset_token": null,
+            "profile_img_url": ""
+        }
+    ],
+    "n_channels": 1,
+    "channels": [
+        {
+            "channel_id": 0,
+            "name": "new channel",
+            "members": [
+                {
+                    "u_id": 0,
+                    "channel_permission": 1
+                }
+            ],
+            "messages": [
+                {
+                    "message_id": 0,
+                    "u_id": 0,
+                    "message": "hello this is my first message",
+                    "time_created": 1573909147,
+                    "reacts": [],
+                    "is_pinned": false
+                },
+                {
+                    "message_id": 1,
+                    "u_id": 0,
+                    "message": "another hello",
+                    "time_created": 1573909149,
+                    "reacts": [],
+                    "is_pinned": false
+                },
+                {
+                    "message_id": 2,
+                    "u_id": 0,
+                    "message": "sjlkdfsjdklf",
+                    "time_created": 1573909151,
+                    "reacts": [],
+                    "is_pinned": false
+                },
+                {
+                    "message_id": 3,
+                    "u_id": 0,
+                    "message": "wooooop",
+                    "time_created": 1573909153,
+                    "reacts": [],
+                    "is_pinned": false
+                }
+            ],
+            "is_public": true,
+            "channel_n_messages": 4
+        }
+    ],
+    "n_messages": 4
+}
