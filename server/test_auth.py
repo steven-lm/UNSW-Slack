@@ -1,7 +1,7 @@
 ''' auth_py pytests '''
 import pytest
 from server.auth import auth_register, auth_login, auth_logout, auth_passwordreset_request
-from server.auth import auth_passwordreset_reset, admin_userpermission_change
+from server.auth import auth_passwordreset_reset, admin_userpermission_change, hash_pw
 from server.helper import reset_data, token_to_user, server_data, AccessError
 
 
@@ -150,7 +150,7 @@ def test_reset_reset():
     print(server_data.data["users"][0]['reset_token'])
     print(reset_code)
     auth_passwordreset_reset(reset_code, "newpassword")
-    assert server_data.data["users"][0]['password'] == "newpassword"
+    assert server_data.data["users"][0]['password'] == hash_pw("newpassword")
 
 @pytest.mark.admin
 def test_admin_change():

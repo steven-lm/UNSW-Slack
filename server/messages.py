@@ -1,5 +1,4 @@
 ''' message funcions'''
-import datetime
 import time as t
 import server_data
 from server.helper import is_valid_message, is_valid_token, token_to_user
@@ -188,14 +187,10 @@ def standup_active(token, channel_id):
     if not channel_exists(int(channel_id)):
         raise ValueError(f"channel does not exist")
 
-    user_id = token_to_user(token)
 
-    if (check_channel_member(user_id, channel_id) is False):
-        raise AccessError(f"User is not part of specified channel. Error code: 2")      
-      
-    standups = server_data.standups 
-    exists = get_standup(standups, channel_id) 
-    
+    standups = server_data.standups
+    exists = get_standup(standups, channel_id)
+
     if exists is None:
         return None # @@@@ NEED TO CHECK IF THIS DOES NOT TRIGGER
 
@@ -239,7 +234,7 @@ def message_remove(token, message_id):
             break
 
     return {}
-    
+
 @validate_token
 def message_edit(token, message_id, message):
     '''
@@ -279,7 +274,7 @@ def message_edit(token, message_id, message):
         message_dict['message'] = message
 
     return {}
-    
+
 @validate_token
 def message_pin(token, message_id):
     '''
@@ -310,7 +305,7 @@ def message_pin(token, message_id):
     # User must be a admin of either the channel or slackr
     check_permission = server_data.data["users"][curr_user_id]["permission"]
     check_isowner = is_owner(curr_user_id, channel["channel_id"])
-    if not check_isowner and check_permission == 3:
+    if (not check_isowner) and check_permission == 3:
         raise ValueError("User is not authorised for this action")
 
     # check if the message is already pinned
@@ -318,7 +313,8 @@ def message_pin(token, message_id):
         raise ValueError("Message is already pinned")
 
     message["is_pinned"] = True
-    
+    return {}
+
 @validate_token
 def message_unpin(token, message_id):
     '''
@@ -356,7 +352,8 @@ def message_unpin(token, message_id):
         raise ValueError("Message is not currently pinned")
 
     message["is_pinned"] = False
-    
+    return {}
+
 @validate_token
 def message_react(token, message_id, react_id):
     '''
@@ -405,7 +402,7 @@ def message_react(token, message_id, react_id):
     })
 
     return {}
-    
+
 @validate_token
 def message_unreact(token, message_id, react_id):
     '''

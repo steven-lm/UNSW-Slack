@@ -261,28 +261,3 @@ def test_standup_active_none():
     # SETUP END
 
     assert standup_active(token, c_id) is None
-
-def test_standup_active_notmember():
-    '''
-    Test standup_active when user is not a member of the channel
-    '''
-    reset_data()
-
-    # SETUP
-
-    registered_user = auth_register('test@gmail.com', '123456', 'John',
-                                    'Smith')
-    token = registered_user['token']
-
-    c_id = channel_create(token, 'Channel1', 'true')
-    standup_start(token, c_id, 60)
-
-    # SETUP END
-
-    # Register another user (not part of server)
-    registered_user = auth_register('test2@gmail.com', '123456', 'John',
-                                    'Smith')
-    token = registered_user['token']
-
-    with pytest.raises(AccessError, match=r"*"):
-        standup_active(token, c_id)

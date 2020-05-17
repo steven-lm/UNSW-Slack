@@ -132,11 +132,11 @@ def test_user_profiles_uploadphoto():
         user_profiles_uploadphoto("invalidToken", img, 0, 0, 100, 100)
     # Invalid dimensions too big
     with pytest.raises(ValueError):
-        user_profiles_uploadphoto(OUTPUT, img, 0, 0, 9999999, 99999999)
+        user_profiles_uploadphoto(output, img, 0, 0, 9999999, 99999999)
 
-    # Invalid dimensions  - x position must be 0 0
+    # x_start greater than x_end
     with pytest.raises(ValueError):
-        user_profiles_uploadphoto(output, img, 0, 5, 100, 100)
+        user_profiles_uploadphoto(output, img, 100, 0, 50, 100)
 
     # Fresh look
     user_profiles_uploadphoto(output, img, 0, 0, 100, 100)
