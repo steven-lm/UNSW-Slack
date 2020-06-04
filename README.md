@@ -5,4 +5,4 @@ For a major project, we were given the task to develop the backend for a messagi
 - Authetication system with email registration
 - Token authorization system
 - Channel invitation system
-- Individual profiles with unique handles and profile picturea
+- Individual profiles with unique handles and profile pictures
